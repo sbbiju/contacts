@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/><br/><br/>
+
+<div class="row">
+<div class="col-sm-12">
+    <h4 class="text-center">CONTACT LIST</h4>
+        <div class="col-sm-5">
+            <form role="search">
+                <input type="text" class="form-control" name="q" placeholder="Search" value="{{ request.GET.q }}"/>
+                <input type='submit' class="btn btn-info" />
+            </form>
+        </div>
+        <div class="row">
+            <input type="button" id="import-button" class="btn btn-primary" value="Import Contact" style="float:right; margin:16px">
+            <div id="container"></div>
+        </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>COMPANY</th>
+
+                </tr>
+            </thead>
+       {% for item in object_list %}
+            <tr>
+                 <td>
+                  {{ forloop.counter }}) <a href="{% url 'contact_detail' item.pk %}">{{ item.first_name }} {{ item.last_name }}</a>
+                </td>
+                 <td>
+                  {{ item.email }}
+                </td>
+                 <td>
+                  {{ item.company }}
+                </td>
+
+            </tr>
+       {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+</div>
+
+
+
+{% endblock %}

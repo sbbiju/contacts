@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/><br/><br/>
+
+<div class="row">
+<div class="col-sm-12">
+    <h4 class="text-center">INTERACTION LIST</h4>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>TITLE</th>
+                    <th>PARTICIPANTS</th>
+                    <th>DATE</th>
+
+                </tr>
+            </thead>
+       {% for item in object_list %}
+            <tr>
+                 <td>
+                  {{ forloop.counter }}) <a href="{% url 'meeting_detail' item.pk %}">{{ item.title }}</a>
+                </td>
+                 <td>
+                  {{ item.participant }}
+                </td>
+                <td>
+                  {{ item.meeting_date }}
+                </td>
+
+            </tr>
+
+       {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

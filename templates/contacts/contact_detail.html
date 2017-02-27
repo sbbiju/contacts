@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<br/><br/><br/>
+
+<div class="row">
+<div class="col-sm-12">
+    <h3>{{ object.first_name }} {{ object.last_name }}</h3>
+<br/>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>EMAIL</th>
+                    <th>JOB TITLE</th>
+                    <th>COMPANY</th>
+                    <th>NOTES</th>
+                    <th>Update?</th>
+                    <th>Delete?</th>
+                </tr>
+            </thead>
+            <tr>
+                 <td>
+                  {{ object.email }}
+                </td>
+                <td>
+                  {{ object.job_title }}
+                </td>
+                 <td>
+                  {{ object.company }}
+                </td>
+                <td>
+                  {{ object.notes }}
+                </td>
+                <td>
+                <a href="{% url 'contact_edit' object.pk %}" class="btn btn-info">
+                    <span class="glyphicon glyphicon-off" area-hidden="true"></span>
+                </a>
+                </td>
+                <td>
+                <a href="{% url 'contact_delete' object.pk %}" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-off" area-hidden="true"></span>
+                </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/><br/>
+        <a href="{% url 'contact_list' %}" class="btn btn-primary" style="float: right">Back to Contact List</a>
+
+</div>
+
+</div>
+
+{% endblock %}

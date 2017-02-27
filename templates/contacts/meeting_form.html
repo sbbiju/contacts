@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br/><br/><br/>
+<div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-4 main">
+<form method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+
+    {{ form.title| as_crispy_field }}
+    <input type="text" id="search-contact" class="form-control" name="q" placeholder="First Name" value="{{ request.GET.q }}"/>
+    {{ form.meeting_date| as_crispy_field }}
+    {{ form.notes| as_crispy_field }}
+
+
+    <input type="submit" class="btn btn-primary" value="Add" />
+</form>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+</div>
+
+{% endblock %}
